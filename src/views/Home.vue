@@ -39,7 +39,7 @@ import Ad from '@/components/home/Ad'
 import Tabbar from '@/components/common/Tabbar'
 //引入插件
 import BetterScroll from 'better-scroll'
-import axios from 'axios'
+import http from '@/common/api/request.js'
 export default {
   name: "Home",
   data () {
@@ -60,25 +60,27 @@ export default {
   },
   methods: {
     async getData () {
-      let { data, topBar } = (await axios({ url: '/api/index_list/0/data/1' })).data.data
+      let { data, topBar } = (await http.$axios({ url: '/api/index_list/0/data/1' }))
       this.items = Object.freeze(topBar)
       this.newData = Object.freeze(data)
       // 当dom都加载完毕了再去执行
       this.$nextTick(() => {
         this.oBetterScroll = new BetterScroll(this.$refs.wrapper, {
           movable: true,
-          zoom: true
+          zoom: true,
+          click: true
         })
       })
     },
     async addData (index) {
-      let res = await axios({ url: `/api/index_list/${index}/data/1` })
-      res.data.data.constructor != Array ? this.newData = res.data.data.data : this.newData = res.data.data
+      let res = await http.$axios({ url: `/api/index_list/${index}/data/1` })
+      res.constructor != Array ? this.newData = res.data : this.newData = res
       // 当dom都加载完毕了再去执行
       this.$nextTick(() => {
         this.tBetterScroll = new BetterScroll(this.$refs.wrapper, {
           movable: true,
-          zoom: true
+          zoom: true,
+          click: true
         })
       })
     },

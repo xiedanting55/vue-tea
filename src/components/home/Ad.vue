@@ -20,12 +20,10 @@ export default {
 }
 </script>
 
-<style scoped>
-.ad {
-  width: 100%;
-}
-.ad img {
-  width: 100%;
-  height: 100%;
-}
+<style scoped lang="sass">
+.ad
+  width: 100%
+  img
+    width: 100%
+    height: 100%
 </style>

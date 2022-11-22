@@ -32,7 +32,45 @@ const routes = [
   {
     path: "/search",
     name: "Search",
+    children: [
+      {
+        path: "/",
+        name: "index",
+        component: () =>
+          import("../views/search/Search-index.vue"),
+      },
+      {
+        path: "list",
+        name: "list",
+        component: () =>
+          import("../views/search/Search-list.vue"),
+      }
+    ],
     component: () => import("../views/Search.vue")
+  },
+  {
+    path: "/detail",
+    name: "Detail",
+    component: () =>
+      import("../views/Detail.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () =>
+      import("../views/login/Login.vue"),
+  },
+  {
+    path: "/userLogin",
+    name: "UserLogin",
+    component: () =>
+      import("../views/login/UserLogin.vue"),
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: () =>
+      import("../views/login/Register.vue"),
   },
 ]
 

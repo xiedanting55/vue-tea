@@ -14,6 +14,11 @@ import '@/assets/js/flexible.js'
 import LyTab from 'ly-tab'
 Vue.use(LyTab)
 
+//全局引入mint-ui
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
+
 Vue.config.productionTip = false
 
 new Vue({
